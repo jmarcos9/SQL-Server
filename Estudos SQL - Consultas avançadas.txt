@@ -1,0 +1,17 @@
+Consultas condicionais
+OR se uma for verdeira o retorno será verdadeiro
+AND as duas tem que ser verdadeiras para ser verdadeiro
+NOT inverte o resultado da consulta - OR as duas tem que ser falso para ser verdaeiro - AND uma tem que ser falso para ser verdadeiro
+IN Condição usada como se fosse OR ex. 
+
+SELECT * FROM [TABELA DE PRODUTOS] WHERE 
+[SABOR] IN ('Manga', 'Laranja')
+ORDER BY [SABOR]
+
+caso a consulta informar muitos parametros é mais indicado usar IN no lugar de OR
+
+Pode fazer consulta usando NOT 
+
+Like - Utilizado somente para campos caracteres SELECT * FROM CLIENTES WHERE NOME LIKP '%SANTOS%' / '%SANTOS' <-FINAL / 'SANTOS%' <-INICIO
+
+DISTINCT - Retorna somente linhas com valores diferentes 

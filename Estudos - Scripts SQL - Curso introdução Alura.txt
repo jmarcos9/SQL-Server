@@ -1,0 +1,157 @@
+SQL Server: Introdução ao SQL com Microsoft SQL SERVER 2017 - Carga Horária: 12hrs
+SQL Server: Consultas avançadas com Microsoft SQL Server 2017 
+
+BD SQL
+Entidade basica é tabela, campos = colunas e registros linhas.
+
+Def PK - Associar alguns campos a chave primaria ... esse conteudo é unico... pode existir chave primaria composta.
+
+Def FK ligacao entre tabelas... igual a relacionamento
+
+indice = estrutura que facilita a busca
+
+consultas em indices é mais rapida, a pk é indice automaticamente
+
+
+grupo de tabelas forma um schema (classificacao)
+
+view = estrutura logica dentro do bd,  consulta em tabela ou tabelas
+
+procedures = processos que vao executar algo dentro do banco, tanto insercao ou qualquer outra manipulao e consultas
+
+trigger = conj de comandos que podem ser procedures e funçoes ou comando unico de manipulacao de dados quando algo acontecer com a tabela.
+
+Criar bd = CREATE DATABASE  nome do banco, pode ser add ON CREATE DATABASE SUCOS_VENDAS_02
+ON (NAME=SUCOS_VENDAS_02_DAT, FILENAME = 'D:\DATA\SALES_VENDAS_02.MDF', SIZE=10, MAXSIZE=50, FILEGROWTH=5)
+LOG ON (NAME=SUCOS_VENDAS_LOG, FILENAME = 'D:\DATA\SALES_VENDAS_02.LDF', SIZE=10, MAXSIZE=50, FILEGROWTH=5) para determinar local, tamanho inicial, tamanho max e tamanho do crescimento, tambem determinar onde vai ser salvo o LOG
+
+Tipos de dados: Numeros exatos
+BIGINT, NUMERIC, BIT,  SMALLINT,  DECIMAL IGUAL AO NUMERIC, SMALLMONEY,  INT, TININT,  MONEY
+
+Numericos Aproximados - pontos flutuantes
+Float, Real
+
+Data e Hora
+Data 0001-01-01 a 999-12-31
+
+DateTimeOffset - data com hora minutos e segundos com reconhecimento de fuso horario
+
+DateTime2 - Data com hora e minutos de 0 a 24
+
+Smalldate - data com hora, expressa 0 a 24
+
+Datetime - Data com hora, minutos e degundos expressa de 0 a 24
+Time - Hora, minutos, segundos expressa de 0 a 24
+
+Caracteres
+Char - ocupa todo tamanho declarado
+Varchar - ocupa apenas o tamanho dos caracteres salvos
+Texto -
+
+CREATE, INSERT, UPDATE, DELETE
+
+ADD CHAVE PRIMARIA = ALTER TABLE PRODUTOS
+ADD CONSTRAINT  PK_PRODUTOS
+PRIMARY KEY CLUSTERED [COD_PRODUTOS] (PARA ISSO O CAMPO NÃO PODE SER NULL)
+
+alterando de null para NOT NULL
+alter table [dbo].[PRODUTOS]
+alter column [COD_PRODUTO] 
+varchar (10) not null
+
+CONSULTAS COM DATAS:
+SELECT * FROM [dbo].[VENDEDORES]
+WHERE YEAR([DATA_ADMISSAO]) >= 2016
+
+
+SELECT  * FROM [dbo].[TABELA DE PRODUTOS]
+WHERE [EMBALAGEM] != 'LATA'
+ORDER BY  [EMBALAGEM]
+
+SELECT * FROM [dbo].[TABELA DE CLIENTES]
+WHERE [DATA DE NASCIMENTO] < '1990-12-30' AND [SEXO] = 'F'
+
+SELECT * FROM [dbo].[TABELA DE CLIENTES] 
+WHERE YEAR([DATA DE NASCIMENTO]) > 1990 
+ 
+ SELECT * FROM [dbo].[TABELA DE CLIENTES] 
+WHERE MONTH([DATA DE NASCIMENTO]) = 10 AND [ESTADO] = 'SP'
+
+
+Diferentes tipos: Categorias de instruções (Transact-SQL)
+
+ 
+
+Data Manipulation Language (DML)
+Data Definition Language (DDL)
+Data Control Language (DCL)
+Transactional Control Language (TCL)
+ 
+
+DML (Linguagem de Manipulação de Dados) – É um conjunto de instruções usada nas consultas e modificações dos dados armazenados nas tabelas do banco de dados.
+
+ 
+
+Alguns Exemplos:
+
+SELECT -> Recupera linhas do banco de dados e permite a seleção de uma ou várias linhas ou colunas de uma ou várias tabelas 
+
+INSERT -> Instrução utilizada para inserir dados a uma ou mais tabelas no banco de dados 
+
+UPDATE -> Instrução utilizada para atualizar dados de uma ou mais tabelas no banco de dados
+
+DELETE -> Instrução utilizada para excluir dados de uma ou mais tabelas no banco de dados
+
+MERGE -> Realiza operações de inserção, atualização ou exclusão em uma tabela de destino com base nos resultados da junção com a tabela de origem
+
+BULK INSET -> Importa um arquivo de dados em uma tabela ou exibição do banco de dados em um formato especificado pelo usuário
+
+ 
+
+ 
+
+DDL (Linguagem de Definição de Dados) – É um conjunto de instruções usado para criar e modificar as estruturas dos objetos armazenados no banco de dados.
+
+ 
+
+Alguns Exemplos:
+
+ALTER -> Use as instruções ALTER para modificar a definição de entidades existentes. Use ALTER TABLE para adicionar uma nova coluna a uma tabela ou use ALTER DATABASE                                   para definir opções do banco de dados.
+
+CREATE -> Use instruções CREATE para definir novas entidades. Use CREATE TABLE para adicionar uma nova tabela em um banco de dados.
+
+DROP -> Use instruções DROP para remover entidades existentes. Use DROP TABLE para remover uma tabela de um banco de dados.
+
+DISABLE TRIGGER -> Desabilita uma Trigger DML, DDL ou de logon.
+
+ENABLE TRIGGER -> Habilita uma Trigger DML, DDL ou de logon.
+
+TRUNCATE TABLE -> Remove todas as linhas de uma tabela sem registrar as exclusões de linhas individuais.
+
+UPDATE STATISTICS -> Atualiza estatísticas de otimização de consulta de uma tabela ou view indexada.
+
+ 
+
+DCL (Linguagem de Controle de Dados) – São usados para controle de acesso e gerenciamento de permissões para usuários em no banco de dados. Com eles, pode facilmente permitir ou negar algumas ações para usuários nas tabelas ou registros (segurança de nível de linha).
+
+ 
+
+Alguns Exemplos:
+
+GRANT -> Atribui privilégios de acesso do usuário a objetos do banco de dados.
+
+REVOKE -> Remove os privilégios de acesso aos objetos obtidos com o comando GRANT.
+
+DENY -> O comando é usado para impedir explicitamente que um usuário receba uma permissão específica.
+
+ 
+
+TCL (Linguagem de Controle de Transações) – São usados ​​para gerenciar as mudanças feitas por instruções DML . Ele permite que as declarações a serem agrupadas em transações lógicas.
+
+ 
+
+Alguns Exemplos:
+
+COMMIT -> É usado para salvar permanentemente qualquer transação no banco de dados.
+
+ROLLBACK -> Este comando restaura o banco de dados para o último estado commited.
