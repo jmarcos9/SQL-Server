@@ -1,2 +1,3 @@
 SQL Server: Introdução ao SQL com Microsoft SQL SERVER 2017 - Carga Horária: 12hrs
 SQL Server: Consultas avançadas com Microsoft SQL Server 2017 - Carga Horária: 12hrs
+SQL Server: Manipulação de dados com Microsoft SQL Server 2017
